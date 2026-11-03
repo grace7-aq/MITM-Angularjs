@@ -2,16 +2,30 @@
 <html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
-    <title>First Angular Project</title>
+    <title>Library System</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
     <script src="app.js"></script>
+    <style>
+        .shelf { border: 2px solid #555; padding: 10px; margin: 10px 0; }
+    </style>
 </head>
 <body>
-    <div ng-controller="collegectrl">
-        <h1>Welcome to {{ college.name }}</h1>
-        <h2>{{ name }}</h2>
-        <h3>{{ department }}</h3>
-        <h3>{{ college.department }}</h3>
-    </div>
-</body>
-</html>
+    <!-- PARENT controller -->
+    <div ng-controller="LibraryCtrl">
+        <h1>Welcome to {{ libraryName }}</h1>
+
+        <h3>Search (two-way binding)</h3>
+        <input type="text" ng-model="search" placeholder="Search book name">
+        <p>You are searching: {{ search }}</p>
+
+        <h3>Add a book</h3>
+        <input type="text" ng-model="newBook.title" placeholder="Book name">
+        <select ng-model="newBook.category" ng-options="c for c in categories"></select>
+        <button ng-click="addBook()">Add</button>
+
+        <hr>
+
+        <!-- CHILD controller: one for each shelf -->
+        <div class="shelf" ng-repeat="cat in categories"
+             ng-controller="ShelfCtrl" ng-init="category = cat">
+            <h2>{{ category
