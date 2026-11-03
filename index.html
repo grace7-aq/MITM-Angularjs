@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Student Details</title>
+
+    <script src="node_modules/Angular/Angular.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-controller="myCtrl">
+
+    <h1>Student Details</h1>
+
+    <h3>Two-Way Data Binding</h3>
+
+    <p>Enter username:</p>
+    <input type="text" ng-model="username">
+
+    <p>Username: {{username}}</p>
+
+    <p>Enter age:</p>
+    <input type="number" ng-model="age">
+
+    <p>Age: {{age}}</p>
+
+    <hr>
+
+    <h3>One-Way Data Binding</h3>
+
+    <p>Department: {{department}}</p>
+
+    <p>Semester: {{semester}}</p>
+
+</body>
+</html>
+
