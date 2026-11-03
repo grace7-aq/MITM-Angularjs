@@ -1,14 +1,11 @@
-
 var app = angular.module("myApp", []);
 
-app.controller("myCtrl", function($scope) {
-
-    // Two-way data binding
-    $scope.username = "";
-    $scope.age = "";
-
-    // One-way data binding (display values)
-    $scope.department = "Information science";
-    $scope.semester = 3;
-
+app.controller("collegectrl", function ($scope) {
+    $scope.name = "sherin grace";
+    $scope.department = "ISE";
+    $scope.college = {
+        name: "maharaja institute of technology",
+        department: "ISE"
+    };
 });
+

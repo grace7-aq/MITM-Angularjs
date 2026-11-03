@@ -1,39 +1,17 @@
-
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
-
 <head>
     <meta charset="UTF-8">
-    <title>Student Details</title>
-
-    <script src="node_modules/Angular/Angular.js"></script>
+    <title>First Angular Project</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
     <script src="app.js"></script>
 </head>
-
-<body ng-controller="myCtrl">
-
-    <h1>Student Details</h1>
-
-    <h3>Two-Way Data Binding</h3>
-
-    <p>Enter username:</p>
-    <input type="text" ng-model="username">
-
-    <p>Username: {{username}}</p>
-
-    <p>Enter age:</p>
-    <input type="number" ng-model="age">
-
-    <p>Age: {{age}}</p>
-
-    <hr>
-
-    <h3>One-Way Data Binding</h3>
-
-    <p>Department: {{department}}</p>
-
-    <p>Semester: {{semester}}</p>
-
+<body>
+    <div ng-controller="collegectrl">
+        <h1>Welcome to {{ college.name }}</h1>
+        <h2>{{ name }}</h2>
+        <h3>{{ department }}</h3>
+        <h3>{{ college.department }}</h3>
+    </div>
 </body>
 </html>
-
