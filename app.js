@@ -4,6 +4,7 @@
 
 var app = angular.module("studentApp", []);
 
+// Parent Controller
 app.controller("CollegeController", function($scope) {
 
     $scope.collegeName =
@@ -11,9 +12,10 @@ app.controller("CollegeController", function($scope) {
 
 });
 
+// Child Controller
 app.controller("StudentController", function($scope) {
 
-    // Array to store student details
+    // Empty array to store student details
     $scope.students = [];
 
     // Input variables
@@ -21,20 +23,23 @@ app.controller("StudentController", function($scope) {
     $scope.semester = "";
     $scope.marks = null;
 
-    // Fixed department
+    // Fixed department for all students
     $scope.department = "INFORMATION SCIENCE";
 
-    // Initially hide details
+    // Initially hide student details
     $scope.showDetails = false;
 
     // Function to add student
     $scope.addStudent = function() {
 
         if ($scope.name && $scope.name.trim() !== "" &&
-            $scope.semester && $scope.marks !== null &&
-            $scope.marks !== undefined) {
+            $scope.semester !== "" &&
+            $scope.semester !== null &&
+            $scope.marks !== null &&
+            $scope.marks !== undefined &&
+            $scope.marks !== "") {
 
-            // Store student details in array
+            // Store student details
             $scope.students.push({
 
                 name: $scope.name,

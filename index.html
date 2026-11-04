@@ -7,130 +7,101 @@
 
     <script src="node_modules/angular/angular.js"></script>
     <script src="app.js"></script>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            padding: 20px;
-        }
-
-        .container {
-            background: white;
-            padding: 20px;
-            max-width: 650px;
-            margin: auto;
-            border-radius: 10px;
-        }
-
-        input {
-            padding: 10px;
-            margin: 8px;
-            width: 90%;
-        }
-
-        button {
-            padding: 10px 15px;
-            margin: 8px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .pass {
-            color: green;
-            font-weight: bold;
-        }
-
-        .fail {
-            color: red;
-            font-weight: bold;
-        }
-
-        li {
-            padding: 5px;
-        }
-    </style>
 </head>
 
 <body>
 
-<div class="container" ng-controller="CollegeController">
+    <div ng-controller="CollegeController">
 
-    <h1>{{ collegeName }}</h1>
-    <h2>Student Management System</h2>
+        <h1>{{ collegeName }}</h1>
+        <h2>Student Management System</h2>
 
-    <div ng-controller="StudentController">
+        <div ng-controller="StudentController">
 
-        <h3>Student Entry Form</h3>
+            <h3>Student Entry Form</h3>
 
-        <input type="text"
-               ng-model="name"
-               placeholder="Enter Student Name">
+            <!-- Student Name -->
+            <label>Enter Student Name:</label>
+            <input type="text"
+                   ng-model="name">
 
-        <p><b>Department:</b> INFORMATION SCIENCE</p>
+            <br><br>
 
-        <input type="number"
-               ng-model="semester"
-               placeholder="Enter Semester">
+            <!-- Department -->
+            <label>Department:</label>
+            <p>INFORMATION SCIENCE</p>
 
-        <input type="number"
-               ng-model="marks"
-               placeholder="Enter Marks">
+            <!-- Semester -->
+            <label>Enter Semester:</label>
+            <input type="number"
+                   ng-model="semester">
 
-        <br>
+            <br><br>
 
-        <button ng-click="addStudent()">
-            Add Student
-        </button>
+            <!-- Marks -->
+            <label>Enter Marks:</label>
+            <input type="number"
+                   ng-model="marks">
 
-        <hr>
+            <br><br>
 
-        <h3>Student List</h3>
+            <!-- Add Student Button -->
+            <button ng-click="addStudent()">
+                Add Student
+            </button>
 
-        <ul>
-            <li ng-repeat="student in students">
-                {{ student.name }}
-            </li>
-        </ul>
+            <hr>
 
-        <hr>
+            <!-- Student List -->
+            <h3>Student List</h3>
 
-        <h3>Student Details</h3>
+            <ul>
+                <li ng-repeat="student in students">
+                    {{ student.name }}
+                </li>
+            </ul>
 
-        <button ng-click="showDetails = !showDetails">
-            Show / Hide Details
-        </button>
+            <hr>
 
-        <div ng-show="showDetails">
+            <!-- Show or Hide Details -->
+            <h3>Student Details</h3>
 
-            <div ng-repeat="student in students">
-                <p><b>Name:</b> {{ student.name }}</p>
-                <p><b>Department:</b> {{ student.department }}</p>
-                <p><b>Semester:</b> {{ student.semester }}</p>
-                <p><b>Marks:</b> {{ student.marks }}</p>
-                <p ng-if="student.marks >= 40"
-                   ng-class="{'pass': student.marks >= 40}">
-                    Result: Pass
-                </p>
+            <button ng-click="showDetails = !showDetails">
+                Show / Hide Details
+            </button>
 
-                <p ng-if="student.marks < 40"
-                   ng-class="{'fail': student.marks < 40}">
-                    Result: Needs Improvement
-                </p>
+            <div ng-show="showDetails">
 
-                <hr>
+                <div ng-repeat="student in students">
+
+                    <p>Name: {{ student.name }}</p>
+
+                    <p>Department: {{ student.department }}</p>
+
+                    <p>Semester: {{ student.semester }}</p>
+
+                    <p>Marks: {{ student.marks }}</p>
+
+                    <p ng-if="student.marks >= 40"
+                       ng-class="{'pass': student.marks >= 40}">
+                        Result: Pass
+                    </p>
+
+                    <p ng-if="student.marks < 40"
+                       ng-class="{'fail': student.marks < 40}">
+                        Result: Needs Improvement
+                    </p>
+
+                    <hr>
+
+                </div>
+
             </div>
 
         </div>
 
     </div>
 
-</div>
-
 </body>
 </html>
-
 
