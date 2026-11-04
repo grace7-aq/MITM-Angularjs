@@ -1,66 +1,136 @@
 
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html ng-app="studentApp">
 
 <head>
-    <meta charset="UTF-8">
-    <title>MIT Mysore Student Registration</title>
+    <title>Student Management System</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
     <script src="app.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            max-width: 650px;
+            margin: auto;
+            border-radius: 10px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 8px;
+            width: 90%;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 8px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .pass {
+            color: green;
+            font-weight: bold;
+        }
+
+        .fail {
+            color: red;
+            font-weight: bold;
+        }
+
+        li {
+            padding: 5px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <div ng-controller="CollegeController">
+<div class="container" ng-controller="CollegeController">
 
-        <h1>Welcome to {{collegeName}}</h1>
+    <h1>{{ collegeName }}</h1>
+    <h2>Student Management System</h2>
+
+    <div ng-controller="StudentController">
+
+        <h3>Student Entry Form</h3>
+
+        <input type="text"
+               ng-model="name"
+               placeholder="Enter Student Name">
+
+        <p><b>Department:</b> INFORMATION SCIENCE</p>
+
+        <input type="number"
+               ng-model="semester"
+               placeholder="Enter Semester">
+
+        <input type="number"
+               ng-model="marks"
+               placeholder="Enter Marks">
+
+        <br>
+
+        <button ng-click="addStudent()">
+            Add Student
+        </button>
+
         <hr>
 
-        <div ng-controller="StudentController">
+        <h3>Student List</h3>
 
-            <h2>Student Registration</h2>
+        <ul>
+            <li ng-repeat="student in students">
+                {{ student.name }}
+            </li>
+        </ul>
 
-            <label>Student Name:</label>
-            <input type="text" ng-model="name">
-            <br><br>
+        <hr>
 
-            <label>Department:</label>
-            <input type="text" ng-model="department">
-            <br><br>
+        <h3>Student Details</h3>
 
-            <label>Semester:</label>
-            <input type="number" ng-model="semester">
-            <br><br>
+        <button ng-click="showDetails = !showDetails">
+            Show / Hide Details
+        </button>
 
-            <button ng-click="addStudent()">
-                Register Student
-            </button>
+        <div ng-show="showDetails">
 
-            <hr>
+            <div ng-repeat="student in students">
+                <p><b>Name:</b> {{ student.name }}</p>
+                <p><b>Department:</b> {{ student.department }}</p>
+                <p><b>Semester:</b> {{ student.semester }}</p>
+                <p><b>Marks:</b> {{ student.marks }}</p>
+                <p ng-if="student.marks >= 40"
+                   ng-class="{'pass': student.marks >= 40}">
+                    Result: Pass
+                </p>
 
-            <h3>Student Details</h3>
+                <p ng-if="student.marks < 40"
+                   ng-class="{'fail': student.marks < 40}">
+                    Result: Needs Improvement
+                </p>
 
-            <p>Name: {{name}}</p>
-            <p>Department: {{department}}</p>
-            <p>Semester: {{semester}}</p>
-
-            <hr>
-
-            <h2>Registered Students</h2>
-
-            <h2>Student List</h2>
-
-            <ul>
-                <li ng-repeat="student in students">
-                    {{student}}
-                </li>
-            </ul>
+                <hr>
+            </div>
 
         </div>
 
     </div>
 
+</div>
+
 </body>
 </html>
+
 

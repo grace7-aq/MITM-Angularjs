@@ -1,40 +1,55 @@
 
-var app = angular.module("myApp", []);
+// Name: Your Full Name
+// Department: INFORMATION SCIENCE
 
-// Parent Controller
+var app = angular.module("studentApp", []);
+
 app.controller("CollegeController", function($scope) {
 
-    $scope.collegeName = "MIT Mysore";
+    $scope.collegeName =
+        "MAHARAJA INSTITUTE OF TECHNOLOGY, MYSURU";
 
 });
 
-// Student Controller
 app.controller("StudentController", function($scope) {
 
-    // Empty student array
+    // Array to store student details
     $scope.students = [];
 
-    // Add Student Function
+    // Input variables
+    $scope.name = "";
+    $scope.semester = "";
+    $scope.marks = null;
+
+    // Fixed department
+    $scope.department = "INFORMATION SCIENCE";
+
+    // Initially hide details
+    $scope.showDetails = false;
+
+    // Function to add student
     $scope.addStudent = function() {
 
         if ($scope.name && $scope.name.trim() !== "" &&
-            $scope.department && $scope.department.trim() !== "" &&
-            $scope.semester) {
+            $scope.semester && $scope.marks !== null &&
+            $scope.marks !== undefined) {
 
-            // Store student details
-            $scope.students.push(
-                $scope.name + " - " +
-                $scope.department + " - Semester " +
-                $scope.semester
-            );
+            // Store student details in array
+            $scope.students.push({
+
+                name: $scope.name,
+                department: $scope.department,
+                semester: $scope.semester,
+                marks: $scope.marks
+
+            });
 
             // Clear input fields
             $scope.name = "";
-            $scope.department = "";
             $scope.semester = "";
+            $scope.marks = null;
 
-        }
-        else {
+        } else {
 
             alert("Please enter all student details");
 
@@ -43,4 +58,6 @@ app.controller("StudentController", function($scope) {
     };
 
 });
+
+
 
