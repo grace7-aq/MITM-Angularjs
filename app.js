@@ -1,23 +1,39 @@
+
 var app = angular.module("myApp", []);
 
-// PARENT controller
-app.controller("LibraryCtrl", function ($scope) {
-    $scope.libraryName = "Maharaja Institute of Technology Library";
-    $scope.search = "";
-    $scope.categories = ["Science", "Computer", "History"];
+// Parent Controller
+app.controller("CollegeController", function($scope) {
+    $scope.collegeName = "MIT Mysore";
+});
 
-    $scope.books = [
-        { title: "Physics Basics", category: "Science" },
-        { title: "Chemistry Fundamentals", category: "Science" },
-        { title: "Biology Today", category: "Science" },
-        { title: "Learning AngularJS", category: "Computer" },
-        { title: "Data Structures", category: "Computer" },
-        { title: "Indian History", category: "History" },
-        { title: "World War II", category: "History" }
-    ];
+// Student Controller
+app.controller("StudentController", function($scope) {
 
-    $scope.newBook = { title: "", category: "Science" };
+    // Empty student array
+    $scope.students = [];
 
-    $scope.addBook = function () {
-        if (!$scope.newBook.title) return;
-        $scope.books.push
+    // Function to add student
+    $scope.addStudent = function() {
+
+        if ($scope.name && $scope.department && $scope.semester) {
+
+            // Store student details in array
+            $scope.students.push({
+                name: $scope.name,
+                department: $scope.department,
+                semester: $scope.semester
+            });
+
+            // Clear input fields
+            $scope.name = "";
+            $scope.department = "";
+            $scope.semester = "";
+
+        } else {
+            alert("Please enter all student details!");
+        }
+
+    };
+
+});
+

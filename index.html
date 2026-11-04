@@ -1,31 +1,64 @@
+
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
+
 <head>
     <meta charset="UTF-8">
-    <title>Library System</title>
+    <title>Student Registration System</title>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
     <script src="app.js"></script>
-    <style>
-        .shelf { border: 2px solid #555; padding: 10px; margin: 10px 0; }
-    </style>
 </head>
+
 <body>
-    <!-- PARENT controller -->
-    <div ng-controller="LibraryCtrl">
-        <h1>Welcome to {{ libraryName }}</h1>
 
-        <h3>Search (two-way binding)</h3>
-        <input type="text" ng-model="search" placeholder="Search book name">
-        <p>You are searching: {{ search }}</p>
+    <div ng-controller="CollegeController">
 
-        <h3>Add a book</h3>
-        <input type="text" ng-model="newBook.title" placeholder="Book name">
-        <select ng-model="newBook.category" ng-options="c for c in categories"></select>
-        <button ng-click="addBook()">Add</button>
-
+        <h1>Welcome to {{collegeName}}</h1>
         <hr>
 
-        <!-- CHILD controller: one for each shelf -->
-        <div class="shelf" ng-repeat="cat in categories"
-             ng-controller="ShelfCtrl" ng-init="category = cat">
-            <h2>{{ category
+        <div ng-controller="StudentController">
+
+            <h2>Student Registration</h2>
+
+            <label>Student Name:</label>
+            <input type="text" ng-model="name" placeholder="Enter student name">
+            <br><br>
+
+            <label>Department:</label>
+            <input type="text" ng-model="department" placeholder="Enter department">
+            <br><br>
+
+            <label>Semester:</label>
+            <input type="number" ng-model="semester" placeholder="Enter semester">
+            <br><br>
+
+            <button ng-click="addStudent()">Add Student</button>
+
+            <hr>
+
+            <h2>Student List</h2>
+
+            <table border="1" cellpadding="10">
+                <tr>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Semester</th>
+                </tr>
+
+                <tr ng-repeat="student in students">
+                    <td>{{student.name}}</td>
+                    <td>{{student.department}}</td>
+                    <td>{{student.semester}}</td>
+                </tr>
+            </table>
+
+            <h3>Total Students: {{students.length}}</h3>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
+
