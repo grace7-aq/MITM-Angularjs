@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Student Registration System</title>
+    <title>MIT Mysore Student Registration</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
     <script src="app.js"></script>
@@ -22,38 +22,40 @@
             <h2>Student Registration</h2>
 
             <label>Student Name:</label>
-            <input type="text" ng-model="name" placeholder="Enter student name">
+            <input type="text" ng-model="name">
             <br><br>
 
             <label>Department:</label>
-            <input type="text" ng-model="department" placeholder="Enter department">
+            <input type="text" ng-model="department">
             <br><br>
 
             <label>Semester:</label>
-            <input type="number" ng-model="semester" placeholder="Enter semester">
+            <input type="number" ng-model="semester">
             <br><br>
 
-            <button ng-click="addStudent()">Add Student</button>
+            <button ng-click="addStudent()">
+                Register Student
+            </button>
 
             <hr>
 
+            <h3>Student Details</h3>
+
+            <p>Name: {{name}}</p>
+            <p>Department: {{department}}</p>
+            <p>Semester: {{semester}}</p>
+
+            <hr>
+
+            <h2>Registered Students</h2>
+
             <h2>Student List</h2>
 
-            <table border="1" cellpadding="10">
-                <tr>
-                    <th>Name</th>
-                    <th>Department</th>
-                    <th>Semester</th>
-                </tr>
-
-                <tr ng-repeat="student in students">
-                    <td>{{student.name}}</td>
-                    <td>{{student.department}}</td>
-                    <td>{{student.semester}}</td>
-                </tr>
-            </table>
-
-            <h3>Total Students: {{students.length}}</h3>
+            <ul>
+                <li ng-repeat="student in students">
+                    {{student}}
+                </li>
+            </ul>
 
         </div>
 
