@@ -39,7 +39,7 @@ app.controller("StudentController", function ($scope, $http) {
 
     var API_URL = "https://vkxumfqltdfplxbvurpx.supabase.co/rest/v1/students";
 
-    var API_KEY = "YOUR_SUPABASE_ANON_KEY";
+    var API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZreHVtZnFsdGRmcGx4YnZ1cnB4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM3NDkwOTksImV4cCI6MjEwOTMyNTA5OX0.rjDkKdVwlarXZ1gnXCPfRaBcTICa6irEtStAaEaHNgs";
 
     var config = {
         headers: {
