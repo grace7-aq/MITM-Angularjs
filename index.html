@@ -1,13 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Management System</title>
 
     <!-- AngularJS -->
@@ -19,60 +15,6 @@
 
 <body>
 
-    <!-- College Controller -->
-    <div ng-controller="CollegeController">
-
-        <h2>Welcome to {{ collegeName }}</h2>
-
-        <hr>
-
-    </div>
-
-
-    <!-- Student Registration Controller -->
-    <div ng-controller="RegistrationController">
-
-        <h2>Student Registration</h2>
-
-        <label>Student Name:</label>
-
-        <input type="text" ng-model="name">
-
-        <br><br>
-
-        <label>Department:</label>
-
-        <input type="text" ng-model="department">
-
-        <br><br>
-
-        <label>Semester:</label>
-
-        <input type="number" ng-model="semester">
-
-        <br><br>
-
-        <button ng-click="addStudent()">
-            Register Student
-        </button>
-
-        <hr>
-
-        <h2>Registered Students</h2>
-
-        <ul>
-            <li ng-repeat="student in students">
-                {{ student }}
-            </li>
-        </ul>
-
-    </div>
-
-
-    <hr>
-
-
-    <!-- Student Management Controller -->
     <div ng-controller="StudentController">
 
         <h1>Student Management System</h1>
@@ -80,21 +22,11 @@
         <!-- Student Form -->
         <form ng-submit="saveStudent()">
 
-            <input
-                type="text"
-                ng-model="student.name"
-                placeholder="Student Name"
-                required
-            >
+            <input type="text" ng-model="student.name" placeholder="Student Name" required>
 
             <br><br>
 
-            <input
-                type="text"
-                ng-model="student.department"
-                placeholder="Department"
-                required
-            >
+            <input type="text" ng-model="student.department" placeholder="Department" required>
 
             <br><br>
 
@@ -102,19 +34,13 @@
                 {{ student.id ? 'Update Student' : 'Add Student' }}
             </button>
 
-            <button
-                type="button"
-                ng-click="cancelEdit()"
-                ng-if="student.id"
-            >
+            <button type="button" ng-click="cancelEdit()" ng-if="student.id">
                 Cancel
             </button>
 
         </form>
 
-
         <hr>
-
 
         <!-- Student List -->
         <h2>Student List</h2>
@@ -129,25 +55,13 @@
             </tr>
 
             <tr ng-repeat="s in students">
-
                 <td>{{ s.id }}</td>
-
                 <td>{{ s.name }}</td>
-
                 <td>{{ s.department }}</td>
-
                 <td>
-
-                    <button ng-click="editStudent(s)">
-                        Edit
-                    </button>
-
-                    <button ng-click="deleteStudent(s.id)">
-                        Delete
-                    </button>
-
+                    <button ng-click="editStudent(s)">Edit</button>
+                    <button ng-click="deleteStudent(s.id)">Delete</button>
                 </td>
-
             </tr>
 
         </table>
