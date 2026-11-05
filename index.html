@@ -1,107 +1,97 @@
-
 <!DOCTYPE html>
-<html ng-app="studentApp">
-
+<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="studentApp">
 <head>
-    <title>Student Management System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Angular project</title>
+     <script src="node_modules/angular/angular.js"></script>
+     <script src="app.js"></script>
+    <title>Student Management</title>
 
     <script src="node_modules/angular/angular.js"></script>
     <script src="app.js"></script>
 </head>
-
 <body>
 
+    
     <div ng-controller="CollegeController">
-
-        <h1>{{ collegeName }}</h1>
-        <h2>Student Management System</h2>
-
+        <h2>welcome to {{collegeName}}</h2>
+        <hr>
         <div ng-controller="StudentController">
-
-            <h3>Student Entry Form</h3>
-
-            <!-- Student Name -->
-            <label>Enter Student Name:</label>
-            <input type="text"
-                   ng-model="name">
-
+            <h2>student registration</h2>
+            <label>student name:</label>
+            <input type="text" ng-model="name">
             <br><br>
 
-            <!-- Department -->
-            <label>Department:</label>
-            <p>INFORMATION SCIENCE</p>
-
-            <!-- Semester -->
-            <label>Enter Semester:</label>
-            <input type="number"
-                   ng-model="semester">
-
+            <label>department:</label>
+            <input type="text" ng-model="department">
             <br><br>
-
-            <!-- Marks -->
-            <label>Enter Marks:</label>
-            <input type="number"
-                   ng-model="marks">
-
-            <br><br>
-
-            <!-- Add Student Button -->
+            <label>semester:</label>
+            <input type="text" ng-model="semester">
+            <hr>
             <button ng-click="addStudent()">
-                Add Student
+                Register Student
             </button>
 
             <hr>
 
-            <!-- Student List -->
-            <h3>Student List</h3>
+            <h2>Registered Students</h2>
 
             <ul>
                 <li ng-repeat="student in students">
-                    {{ student.name }}
+                    {{ student }}
                 </li>
             </ul>
 
-            <hr>
-
-            <!-- Show or Hide Details -->
-            <h3>Student Details</h3>
-
-            <button ng-click="showDetails = !showDetails">
-                Show / Hide Details
-            </button>
-
-            <div ng-show="showDetails">
-
-                <div ng-repeat="student in students">
-
-                    <p>Name: {{ student.name }}</p>
-
-                    <p>Department: {{ student.department }}</p>
-
-                    <p>Semester: {{ student.semester }}</p>
-
-                    <p>Marks: {{ student.marks }}</p>
-
-                    <p ng-if="student.marks >= 40"
-                       ng-class="{'pass': student.marks >= 40}">
-                        Result: Pass
-                    </p>
-
-                    <p ng-if="student.marks < 40"
-                       ng-class="{'fail': student.marks < 40}">
-                        Result: Needs Improvement
-                    </p>
-
-                    <hr>
-
-                </div>
-
-            </div>
 
         </div>
-
     </div>
+</html>
+
+<body ng-controller="StudentController">
+
+    <h1>Student Management</h1>
+
+    <form ng-submit="saveStudent()">
+        <input type="text" ng-model="student.name"
+               placeholder="Student Name" required>
+
+        <input type="text" ng-model="student.department"
+               placeholder="Department" required>
+
+        <button type="submit">
+            {{ student.id ? 'Update Student' : 'Add Student' }}
+        </button>
+
+        <button type="button" ng-click="cancelEdit()"
+                ng-if="student.id">
+            Cancel
+        </button>
+    </form>
+
+    <hr>
+
+    <h2>Student List</h2>
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+
+        <tr ng-repeat="s in students">
+            <td>{{ s.id }}</td>
+            <td>{{ s.name }}</td>
+            <td>{{ s.department }}</td>
+            <td>
+                <button ng-click="editStudent(s)">Edit</button>
+                <button ng-click="deleteStudent(s.id)">Delete</button>
+            </td>
+        </tr>
+    </table>
 
 </body>
 </html>
-
